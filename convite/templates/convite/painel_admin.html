@@ -1,0 +1,98 @@
+{% load static %}
+{% load tz %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Confirmados</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+  <div class="max-w-6xl mx-auto bg-white shadow-lg rounded-xl p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-2xl font-bold">Painel de Confirmados</h2>
+      <form method="post" action="{% url 'logout_admin' %}">
+        {% csrf_token %}
+        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Sair</button>
+      </form>
+    </div>
+
+    {% if sucesso_exclusao %}
+      <div class="bg-green-100 text-green-800 px-4 py-2 rounded mb-4">
+        Presença removida com sucesso!
+      </div>
+    {% endif %}
+
+    <div class="mb-6">
+      <p><strong>Total presencial:</strong> {{ total_presenciais }}</p>
+      <p><strong>Total online:</strong> {{ total_online }}</p>
+    </div>
+
+    <div class="mb-4">
+      <input id="filtro-nome" type="text" placeholder="Filtrar por nome..." class="border px-4 py-2 rounded w-full" onkeyup="filtrarPorNome()">
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <h3 class="text-xl font-semibold mb-2">Presenciais</h3>
+        <ul id="lista-presenciais" class="space-y-2">
+          {% for c in confirmacoes %}
+            {% if c.tipo == "presencial" %}
+              <li class="bg-gray-50 p-3 rounded shadow flex justify-between items-center">
+                <div>
+                  <p><strong>{{ c.nome }}</strong></p>
+                  <p class="text-sm text-gray-500">Confirmado em {% localtime on %}{{ c.data_confirmacao|date:"d/m/Y H:i" }}{% endlocaltime %}</p>
+                </div>
+                <form method="post" action="{% url 'excluir_confirmacao' c.id %}" onsubmit="return confirmarExclusao('{{ c.nome }}', '{{ c.tipo }}')">
+                  {% csrf_token %}
+                  <button type="submit" class="text-red-600 hover:text-red-800 text-xl">🗑️</button>
+                </form>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold mb-2">Online</h3>
+        <ul id="lista-online" class="space-y-2">
+          {% for c in confirmacoes %}
+            {% if c.tipo == "online" %}
+              <li class="bg-gray-50 p-3 rounded shadow flex justify-between items-center">
+                <div>
+                  <p><strong>{{ c.nome }}</strong></p>
+                  <p class="text-sm text-gray-500">Confirmado em {% localtime on %}{{ c.data_confirmacao|date:"d/m/Y H:i" }}{% endlocaltime %}</p>
+                </div>
+                <form method="post" action="{% url 'excluir_confirmacao' c.id %}" onsubmit="return confirmarExclusao('{{ c.nome }}', '{{ c.tipo }}')">
+                  {% csrf_token %}
+                  <button type="submit" class="text-red-600 hover:text-red-800 text-xl">🗑️</button>
+                </form>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function filtrarPorNome() {
+      const filtro = document.getElementById('filtro-nome').value.toLowerCase();
+      const listas = ["lista-presenciais", "lista-online"];
+      listas.forEach(id => {
+        const ul = document.getElementById(id);
+        const itens = ul.getElementsByTagName("li");
+        for (let i = 0; i < itens.length; i++) {
+          const nome = itens[i].getElementsByTagName("strong")[0].innerText.toLowerCase();
+          itens[i].style.display = nome.includes(filtro) ? "flex" : "none";
+        }
+      });
+    }
+
+    function confirmarExclusao(nome, tipo) {
+      return confirm(`Tem certeza que deseja excluir \"${nome}\" (${tipo})?`);
+    }
+  </script>
+</body>
+</html>

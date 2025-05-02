@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmar Presença</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .botao-moderno {
+      background: linear-gradient(135deg, #ff914d, #ff5e62);
+      color: white;
+      font-weight: bold;
+      border-radius: 9999px;
+      padding: 10px 24px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .botao-moderno:hover {
+      background: linear-gradient(135deg, #ff5e62, #ff914d);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <div class="bg-white shadow-xl rounded-lg p-8 w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-6 text-center">Confirme sua presença</h2>
+
+    <form method="post" class="space-y-4">
+      {% csrf_token %}
+      <div>
+        <label class="block mb-1">Nome completo:</label>
+        <input type="text" name="nome" required class="w-full border rounded px-4 py-2" />
+      </div>
+
+      <div>
+        <label class="block mb-1">Como você vai assistir?</label>
+        <select name="tipo" required class="w-full border rounded px-4 py-2">
+          <option value="presencial">Presencial</option>
+          <option value="online">Online (Meet)</option>
+        </select>
+      </div>
+
+      <div class="flex justify-between items-center">
+        <a href="{% url 'tela_principal' %}" class="text-blue-600 hover:underline">Voltar para a tela principal</a>
+        <button type="submit" class="botao-moderno">Confirmar</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

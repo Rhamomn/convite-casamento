@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Convite de Casamento - A & N</title>
+    <link rel="stylesheet" href="{% static 'convite/style.css' %}" />
+  </head>
+  <body>
+    <div class="container fade-in">
+      <div class="imagem-central">
+        <img src="{% static 'convite/convite-foto-floral.png' %}" alt="Casal com moldura floral" />
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: center">
+        <h1 class="iniciais letra-a">A</h1>
+        <h1 class="iniciais letra-e">&</h1>
+        <h1 class="iniciais letra-n">N</h1>
+      </div>
+
+      <p class="mensagem">
+        Convidamos você para a celebração do nosso casamento
+      </p>
+
+      <h2 class="dia-semana">QUARTA</h2>
+
+      <div class="data">
+        <div class="data-box">
+          <div class="linha"></div>
+          <span>Maio</span>
+          <div class="linha"></div>
+        </div>
+
+        <div class="numero-dia">7</div>
+
+        <div class="data-box">
+          <div class="linha"></div>
+          <span>2025</span>
+          <div class="linha"></div>
+        </div>
+      </div>
+
+      <p class="hora">Às 14:00</p>
+
+      <!-- Contador -->
+      <div class="contador" id="contador">
+        <p>Contagem regressiva para o grande momento 💍</p>
+        <div id="timer">Carregando...</div>
+      </div>
+
+      <!-- Link de transmissão -->
+      <div class="transmissao">
+        <p>
+          Ficaremos muito felizes em ter a sua companhia, seja presencialmente
+          ou assistindo à transmissão ao vivo. Esperamos você para celebrar
+          conosco esse dia tão marcante e especial em nossas vidas!
+        </p>
+
+        <p>
+           <!--  <a href="{% url 'confirmar_presenca' %}" class="text-link">
+            Confirme sua presença aqui!
+          </a>-->
+        </p>
+
+        <div class="versiculo">
+          <p>
+            “O amor é paciente e bondoso... se alegra com a verdade. Suporta
+            todas as coisas, acredita em todas as coisas, espera todas as
+            coisas, persevera em todas as coisas.”
+          </p>
+          <p>— 1 Coríntios 13:4-7</p>
+        </div>
+
+        <p><strong>Assista ao vivo:</strong></p>
+        <a href="https://youtube.com/seulink" target="_blank" class="botao-moderno">
+          Clique aqui para a transmissão
+        </a>
+
+        <!-- Endereço -->
+        <p class="local">
+          Cartório civil de Santo Estêvão,<br />
+          Rua Av. Mal. Floriano Peixoto, 100, Santo Estêvão - BA
+        </p>
+
+        <p class="text-xs text-center mt-6">
+          <!-- <a href="{% url 'login_admin' %}" class="text-gray-500 hover:underline">
+            Acesso da noiva
+          </a>-->
+        </p>
+      </div>
+    </div>
+
+    <script src="{% static 'convite/script.js' %}"></script>
+  </body>
+</html>

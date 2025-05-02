@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acesso ao Painel</title>
+  <link rel="stylesheet" href="{% static 'convite/style.css' %}">
+</head>
+<body class="bg-white min-h-screen flex items-center justify-center">
+  <div class="container fade-in" style="max-width: 400px; text-align: center;">
+    <h2 class="mensagem">Login do Painel</h2>
+    {% if erro %}
+      <p style="color:red; font-weight: bold;">Código incorreto!</p>
+    {% endif %}
+    <form method="post" style="margin-top: 20px;">
+      {% csrf_token %}
+      <label for="codigo">Digite o código de acesso:</label><br>
+      <input type="password" id="codigo" name="codigo" required class="botao-moderno" style="margin: 12px auto; display: block; padding: 10px; width: 100%; max-width: 250px; text-align: center;" />
+      <button type="submit" class="botao-moderno">Entrar</button>
+    </form>
+    <div style="margin-top: 20px;">
+      <a href="{% url 'tela_principal' %}" class="text-xs text-gray-500 hover:underline">
+        Voltar para o convite
+      </a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,219 @@
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@300;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background: #fffefc;
+  color: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  text-align: center;
+  padding: 30px;
+  max-width: 600px;
+  width: 90%;
+}
+
+.imagem-central img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 50%;
+  animation: fadeInScale 1.2s ease;
+  display: block;
+  margin: 0 auto 20px;
+  align-items: center;
+  align-content: center;
+}
+
+.iniciais {
+  font-family: "Alex Brush", cursive;
+  margin: 15px 5px 10px;
+}
+
+.letra-a,
+.letra-n {
+  font-size: 48px;
+}
+
+.letra-e {
+  font-size: 30px !important; /* menor para o & */
+  margin-top: 22px; /* ajuste vertical se quiser */
+}
+
+.mensagem {
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.dia-semana {
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.numero-dia {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.data-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+}
+
+.data-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+  gap: 5px; /* espaço entre linha e texto */
+}
+
+.linha {
+  width: 150px; /* ou 80px, ajuste como quiser */
+  height: 1px;
+  background-color: #111;
+}
+
+.hora {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.local {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Contador e transmissão */
+.contador {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #444;
+  font-weight: 800;
+}
+
+#timer {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.transmissao {
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+.transmissao p {
+  margin: 5px 0;
+  line-height: 1.4;
+}
+
+.versiculo p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.versiculo p:last-child {
+  font-style: italic;
+  font-size: 14px;
+}
+
+.transmissao a {
+  color: #b66500;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.transmissao a:hover {
+  text-decoration: underline;
+}
+
+/* Animações */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+.botao-moderno {
+  display: inline-block;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #ff914d, #ff5e62);
+  color: white !important;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 18px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.botao-moderno:hover {
+  background: linear-gradient(135deg, #ff5e62, #ff914d);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .letra-a,
+  .letra-n {
+    font-size: 40px;
+  }
+
+  .letra-e {
+    font-size: 5px;
+  }
+
+  .numero-dia {
+    font-size: 32px;
+  }
+
+  .data-box {
+    font-size: 16px;
+  }
+
+  .letra-e {
+    font-size: 24px !important;
+  }
+}
