@@ -56,6 +56,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'casamento.urls'
 
+# Força o Django a rodar collectstatic mesmo sem shell
+os.environ['DJANGO_COLLECTSTATIC'] = '1'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
